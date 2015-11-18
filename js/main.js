@@ -1,6 +1,6 @@
-requirejs(['mediator', 'loginUserInteractions', 'loginValidators', 'loginDomUpdate'], 
+requirejs(['mediator', 'loginUserInteractions', 'loginValidators', 'loginDomUpdate', 'loginFakeAjax'], 
 
-  function(Mediator, loginUserInteractions, loginValidators, loginDomUpdate) {
+  function(Mediator, loginUserInteractions, loginValidators, loginDomUpdate, loginFakeAjax) {
 
     loginUserInteractions.init();
 
@@ -8,17 +8,7 @@ requirejs(['mediator', 'loginUserInteractions', 'loginValidators', 'loginDomUpda
 
     loginDomUpdate.init();
 
-    Mediator.subscribe('loginSubmit', function(context){
-      console.log(context);
-      return context;
-    });
+    loginFakeAjax.init();
 
-    Mediator.subscribe('loginSubmit', function(context){
-      console.log('Callback 2');
-    });
-
-    Mediator.subscribe('passwordEntered', function(context){
-      console.log("Password: " + context.value);
-    });
   }
 );

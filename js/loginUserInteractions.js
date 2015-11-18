@@ -23,6 +23,18 @@
       });
     },
 
+    userNameFocusPublisher: function() {
+      document.getElementById('username').addEventListener('focus', function(event){
+        mediator.publish('userNameFieldFocused', this);
+      });
+    },
+
+    passwordFocusPublisher: function() {
+      document.getElementById('password').addEventListener('focus', function(event){
+        mediator.publish('passwordFieldFocused', this);
+      });
+    },
+
     userNameChangePublisher: function() {
       document.getElementById('username').addEventListener('change', function(event){
         mediator.publish('userNameEntered', this);
@@ -41,6 +53,8 @@
       internalApi.loginSubmitPublisher();
       internalApi.userNameChangePublisher();
       internalApi.passwordChangePublisher();
+      internalApi.userNameFocusPublisher();
+      internalApi.passwordFocusPublisher();
     }
   };
 });
